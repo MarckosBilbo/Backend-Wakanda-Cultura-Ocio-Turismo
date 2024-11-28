@@ -1,0 +1,93 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Evento {
+  - id : Long
+  - nombre : String
+  - descripcion : String
+  - fecha : LocalDateTime
+  - horario : String
+}
+
+class LugarTuristico {
+  - id : Long
+  - nombre : String
+  - descripcion : String
+  - ubicacion : String
+  - historia : String
+}
+
+class Restaurante {
+  - id : Long
+  - nombre : String
+  - tipo : String
+  - horario : String
+  - menu : String
+  - ubicacion : String
+}
+
+class ActividadCultural {
+  - id : Long
+  - nombre : String
+  - descripcion : String
+  - horario : String
+  - duracion : String
+  - precio : Float
+}
+
+class EventoService {
+  + createEvento()
+  + updateEvento()
+  + deleteEvento()
+  + getEventos()
+}
+
+class LugarTuristicoService {
+  + createLugarTuristico()
+  + updateLugarTuristico()
+  + deleteLugarTuristico()
+  + getLugaresTuristicos()
+}
+
+class RestauranteService {
+  + createRestaurante()
+  + updateRestaurante()
+  + deleteRestaurante()
+  + getRestaurantes()
+}
+
+class ActividadCulturalService {
+  + createActividadCultural()
+  + updateActividadCultural()
+  + deleteActividadCultural()
+  + getActividadesCulturales()
+}
+
+class EventoController {
+  + API endpoints for events
+}
+
+class LugarTuristicoController {
+  + API endpoints for tourist places
+}
+
+class RestauranteController {
+  + API endpoints for restaurants
+}
+
+class ActividadCulturalController {
+  + API endpoints for cultural activities
+}
+
+Evento --> EventoService
+EventoService --> EventoController
+
+LugarTuristico --> LugarTuristicoService
+LugarTuristicoService --> LugarTuristicoController
+
+Restaurante --> RestauranteService
+RestauranteService --> RestauranteController
+
+ActividadCultural --> ActividadCulturalService
+ActividadCulturalService --> ActividadCulturalController
+@enduml

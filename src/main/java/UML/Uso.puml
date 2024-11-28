@@ -1,0 +1,14 @@
+@startuml
+actor Usuario
+
+usecase "Consultar eventos" as U1
+usecase "Consultar lugares turísticos" as U2
+usecase "Consultar restaurantes" as U3
+usecase "Consultar actividades culturales" as U4
+
+Usuario --> U1
+Usuario --> U2
+Usuario --> U3
+Usuario --> U4
+
+@enduml
