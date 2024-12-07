@@ -7,9 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.example.backendwakandaculturaocioturismo.domain.*;
         import org.example.backendwakandaculturaocioturismo.repos.*;
         import org.springframework.boot.CommandLineRunner;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import java.time.LocalDateTime;
 
+@EnableDiscoveryClient
 @SpringBootApplication
 public class BackendWakandaCulturaOcioTurismoApplication {
 

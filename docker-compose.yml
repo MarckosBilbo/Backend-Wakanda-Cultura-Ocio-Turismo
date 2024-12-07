@@ -1,8 +1,45 @@
 services:
-  mysql:
-    image: mysql:9.0
+  mysql-ocio:
+    image: mysql:8.0
+    container_name: mysql-ocio
     environment:
-      - MYSQL_DATABASE=Backend-Wakanda-Cultura-Ocio-Turismo
+      - MYSQL_DATABASE=Backend_Wakanda_Cultura_Ocio_Turismo
       - MYSQL_ROOT_PASSWORD=P4ssword!
     ports:
-      - 3307:3306
+      - "3307:3306"
+    networks:
+      - backend-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-P", "3306", "-u", "root", "-pP4ssword!"]
+      interval: 10s
+      retries: 5
+      timeout: 5s
+
+  backend-wakanda-cultura-ocio-turismo:
+    build:
+      context: ./  # El Dockerfile del microservicio de ocio
+    container_name: backend-wakanda-cultura-ocio-turismo
+    environment:
+      - EUREKA_SERVER_URL=http://eureka-server:8761/eureka/
+      - SPRING_PROFILES_ACTIVE=default
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-ocio:3306/Backend_Wakanda_Cultura_Ocio_Turismo?serverTimezone=UTC
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=P4ssword!
+    depends_on:
+      mysql-ocio:
+        condition: service_healthy
+      eureka-server:
+        condition: service_started
+    ports:
+      - "8091:8091"
+    networks:
+      - backend-network
+    entrypoint: [
+      "./wait-for-it.sh", "eureka-server:8761", "-t", "60", "--",
+      "./wait-for-it.sh", "mysql-ocio:3306", "-t", "60", "--",
+      "java", "-jar", "/app/backend_wakanda_cultura_ocio_turismo.jar"
+    ]
+
+networks:
+  backend-network:
+    external: true
