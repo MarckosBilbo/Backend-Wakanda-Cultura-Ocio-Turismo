@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y curl && \
     curl -o /app/wait-for-it.sh https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh && \
     chmod +x /app/wait-for-it.sh
 
-EXPOSE 8091
+EXPOSE 8096
 
 ENV EUREKA_SERVER_URL=http://eureka-server:8761/eureka/
 
