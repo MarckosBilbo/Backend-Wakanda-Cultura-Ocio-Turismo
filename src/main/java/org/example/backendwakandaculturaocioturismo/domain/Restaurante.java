@@ -27,4 +27,11 @@ public class Restaurante {
 
     @Column(nullable = false)
     private String menu;
+
+    public Restaurante(String saboresDeWakanda, String barrioCultural, String comidaTípica, String s, String s1) {
+    }
+
+    public Restaurante() {
+
+    }
 }

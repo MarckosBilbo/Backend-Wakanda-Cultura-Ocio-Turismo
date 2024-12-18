@@ -27,4 +27,11 @@ public class ActividadCultural {
 
     @Column(nullable = false)
     private Double precio;
+
+    public ActividadCultural(String cataDeComida, String pruebaPlatosTradicionales, String s, String s1, double v) {
+    }
+
+    public ActividadCultural() {
+
+    }
 }

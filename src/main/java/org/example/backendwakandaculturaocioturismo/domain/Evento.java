@@ -26,4 +26,11 @@ public class Evento {
 
     @Column(nullable = false)
     private String descripcion;
+
+    public Evento(String carnavalWakandiano, LocalDateTime localDateTime, String s, String desfilesYMúsica) {
+    }
+
+    public Evento() {
+
+    }
 }

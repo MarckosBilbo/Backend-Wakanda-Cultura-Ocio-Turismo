@@ -25,5 +25,12 @@ public class LugarTuristico {
 
     @Column(nullable = true)
     private String historia; // Información histórica adicional (opcional)
+
+    public LugarTuristico(String museoDeHistoria, String centroHistórico, String museoConArtefactosHistóricos, String s) {
+    }
+
+    public LugarTuristico() {
+
+    }
 }
 
